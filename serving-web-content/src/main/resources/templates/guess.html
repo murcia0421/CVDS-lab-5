@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Guess the number</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<b><p th:text="|Hi ${name}, try to guess the number|"></b>
+	<p th:text="|You are making your try number: ${try}|">
+	<form action="/guess" method="post">
+        <label for="userInput">Put a number:</label>
+        <input type="text" id="userInput" name="userInput">
+        <button type="submit" name = "submitButton" value = "submitButton">Try</button>
+        <button type="submit" name = "reset" value = "reset">reset</button>
+    </form>
+    
+</body>
+</html>
