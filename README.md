@@ -17,7 +17,7 @@ Ahora has otro request GET al recurso https://dummyjson.com/todos, nuevamente ve
 
 Responde las siguientes preguntas:
 - ¿Qué pasa si no envío el método correcto?
-    En caso de no enviar el metodo correcto veremos que la aplicacion de Postaman nos envia el siguiente error}
+    En caso de no enviar el metodo correcto veremos que la aplicacion de Postaman nos envia el siguiente error
     ![img.png](img.png)
 - ¿Qué pasa si al body response HTML lo fuerzo a leerse como JSON?
     Al forzar la lecutra de un HTML como JSON vemos como se intenta interpretar el HTML como JSON en este proceso vemos como existen malas interpretaciones, como por ejemplo que el archivo en HTML tiene 4995 y el JSON en cambio reduce este numero a 4550 por ende se envidencia que el archivo se corrompio.
