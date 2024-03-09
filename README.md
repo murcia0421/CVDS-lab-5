@@ -87,9 +87,9 @@ Después de terminar el aprendizaje analice:
 - ¿Por qué MVC obtiene ese nombre? (puede apoyarse de https://www.javatpoint.com/spring-mvc-tutorial)
       MVC (Model-View-Controller) recibe este nombre por la separación de responsabilidades en tres componentes clave:
 
-        Modelo: Representa los datos de la aplicación.
-        Vista: Se encarga de la presentación de los datos al usuario.
-        Controlador: Intermedia entre el modelo y la vista, procesando las solicitudes del usuario y actualizando el modelo.
+      Modelo: Representa los datos de la aplicación.
+      Vista: Se encarga de la presentación de los datos al usuario.
+      Controlador: Intermedia entre el modelo y la vista, procesando las solicitudes del usuario y actualizando el modelo.
   
 - ¿Cuáles son las ventajas de usar MVC?
 
@@ -161,35 +161,39 @@ Analice las siguientes situaciones:
     
     1. Implementación de un sistema de autenticación:
         
-    Integra un sistema de autenticación en tu aplicación, como Spring Security o Auth0.
-    Permite a los jugadores registrarse e iniciar sesión en el sitio web.
+        Integra un sistema de autenticación en tu aplicación, como Spring Security o Auth0.
+        Permite a los jugadores registrarse e iniciar sesión en el sitio web.
+       
     2. Almacenamiento del saldo:
     
-    Elige entre dos opciones:
-    Sesión: Almacena el saldo en la sesión del usuario junto con el número aleatorio.
-    Base de datos: Crea una tabla en la base de datos para almacenar el saldo, número aleatorio y otra información relevante de cada jugador.
-    3. Generación del número aleatorio y saldo inicial:
+        Elige entre dos opciones:
+        Sesión: Almacena el saldo en la sesión del usuario junto con el número aleatorio.
+        Base de datos: Crea una tabla en la base de datos para almacenar el saldo, número aleatorio y otra información relevante de cada jugador.
+       
+    4. Generación del número aleatorio y saldo inicial:
     
-    Al iniciar el juego, genera un nuevo número aleatorio entre 1 y 10.
-    Asigna un saldo inicial al jugador, como $100.000.
-    Si se usa una sesión, guarda el número aleatorio y el saldo en la sesión del usuario.
-    Si se usa una base de datos, crea un nuevo registro para el jugador con el número aleatorio y el saldo inicial.
-    4. Procesamiento del número del usuario:
+        Al iniciar el juego, genera un nuevo número aleatorio entre 1 y 10.
+        Asigna un saldo inicial al jugador, como $100.000.
+        Si se usa una sesión, guarda el número aleatorio y el saldo en la sesión del usuario.
+        Si se usa una base de datos, crea un nuevo registro para el jugador con el número aleatorio y el saldo inicial.}
+       
+    5. Procesamiento del número del usuario:
     
-    Valida el número ingresado por el usuario.
-    Si el número es válido, actualiza el saldo en función de la lógica del juego:
-    Si el usuario acierta en la primera oportunidad, gana el premio actual.
-    Si el usuario falla, reduce el premio actual en $10.000.
-    Si se usa una sesión, actualiza el saldo en la sesión del usuario.
-    Si se usa una base de datos, actualiza el registro del jugador en la base de datos.
-    5. Visualización del saldo y número de intentos:
-    
-    Muestra al usuario el saldo actual y el número de intentos realizados en la interfaz del juego.
+        Valida el número ingresado por el usuario.
+        Si el número es válido, actualiza el saldo en función de la lógica del juego:
+        Si el usuario acierta en la primera oportunidad, gana el premio actual.
+        Si el usuario falla, reduce el premio actual en $10.000.
+        Si se usa una sesión, actualiza el saldo en la sesión del usuario.
+        Si se usa una base de datos, actualiza el registro del jugador en la base de datos.
+        5. Visualización del saldo y número de intentos:
+        
+        Muestra al usuario el saldo actual y el número de intentos realizados en la interfaz del juego.
+       
     6. Restablecimiento del juego:
     
-    Al presionar el botón de "reset", genera un nuevo número aleatorio y restablece el saldo al valor inicial.
-    Si se usa una sesión, elimina el número aleatorio y el saldo de la sesión del usuario.
-    Si se usa una base de datos, actualiza el registro del jugador en la base de datos con el nuevo número aleatorio y el saldo inicial.
+        Al presionar el botón de "reset", genera un nuevo número aleatorio y restablece el saldo al valor inicial.
+        Si se usa una sesión, elimina el número aleatorio y el saldo de la sesión del usuario.
+        Si se usa una base de datos, actualiza el registro del jugador en la base de datos con el nuevo número aleatorio y el saldo inicial.
 
 ## ENTREGA
 - En un README.md colocar lo siguiente:
