@@ -85,10 +85,39 @@ Para esto usaremos la documentación oficial de Spring con que que aprenderemos 
 
 Después de terminar el aprendizaje analice:
 - ¿Por qué MVC obtiene ese nombre? (puede apoyarse de https://www.javatpoint.com/spring-mvc-tutorial)
+      MVC (Model-View-Controller) recibe este nombre por la separación de responsabilidades en tres componentes clave:
+
+        Modelo: Representa los datos de la aplicación.
+        Vista: Se encarga de la presentación de los datos al usuario.
+        Controlador: Intermedia entre el modelo y la vista, procesando las solicitudes del usuario y actualizando el modelo.
+  
 - ¿Cuáles son las ventajas de usar MVC?
+
+      Separación de responsabilidades: Facilita el desarrollo y mantenimiento del código, al dividirlo en módulos con responsabilidades bien definidas.
+      Reutilización de código: Los componentes MVC pueden ser reutilizados en diferentes aplicaciones.
+      Flexibilidad: Permite un desarrollo más flexible y adaptable a diferentes necesidades.
+      Testabilidad: Facilita la prueba de las diferentes unidades de la aplicación.
+  
 - ¿Qué diferencia tiene la estructura de directorios de este proyecto comparado con las de proyectos pasados (con solo maven y java EE)?
+
+      La estructura de directorios del proyecto Spring difiere de la de proyectos con solo Maven y Java EE en los siguientes aspectos:
+
+      Carpeta src/main/java: Contiene las clases Java del proyecto, incluyendo los controladores, modelos y vistas.
+      Carpeta src/main/resources: Contiene archivos de configuración, como archivos .properties y archivos JSP para las vistas.
+      Carpeta src/main/webapp: Contiene recursos estáticos como imágenes, CSS y JavaScript.
+      Carpeta web.xml: Define el servlet DispatcherServlet que maneja las solicitudes HTTP.
+  
 - ¿Qué anotaciones usaste y cuál es la diferencia entre ellas?
+
+      @Controller: Indica que una clase es un controlador MVC.
+      @RequestMapping: Mapea una solicitud HTTP a un método específico del controlador.
+      @GetMapping: Anota un método para manejar solicitudes HTTP GET.
+      @PostMapping: Anota un método para manejar solicitudes HTTP POST.
+      @ResponseBody: Indica que el método devuelve un cuerpo de respuesta HTTP.
+  
 - Ahora, haz el request GET http://localhost:8080/greeting usando Postman, y revisa si el body de la respuesta es igual a alguno de los archivos del proyecto. Significa eso que es un recurso web dinámico o estático?
+
+      Al realizar un request GET a http://localhost:8080/greeting usando Postman, la respuesta tendrá un cuerpo con el mensaje "Hello, World!". Este mensaje no coincide con ningún archivo del proyecto, lo       que significa que es un recurso web dinámico. El controlador GreetingController genera el mensaje "Hello, World!" en tiempo real, en lugar de servir un archivo estático.
 
 ### PARTE IV. - APLICACIÓN MVC PARA CONSUMO DE SERVICIO RESTful
 Usando la arquitectura MVC del punto anterior (el proyecto anterior), realice una aplicación simple qué permita navegar gráficamente sobre esta API
@@ -96,8 +125,17 @@ https://jsonplaceholder.typicode.com/todos/1, puede guiarse de tutoriales como h
 
 Luego de terminada esta parte responda:
 - ¿Qué es RESTful?
+    
+    RESTful es un estilo de arquitectura para APIs que se basa en los siguientes principios:
+
+    Uso de URIs para identificar recursos: Cada recurso tiene una URI única que lo identifica.
+    Uso de métodos HTTP para realizar acciones en los recursos: Los métodos GET, POST, PUT y DELETE se utilizan para recuperar, crear, actualizar y eliminar recursos, respectivamente.
+    Intercambio de datos en formato JSON: JSON es un formato de intercambio de datos ligero y fácil de leer por humanos y máquinas.
+  
 - Si utilizo un framework como [Boostrap CSS](https://getbootstrap.com/) para qué el apartado gráfico se vea más profesional, ¿en qué capa se haría su uso?
 
+    La capa Vista es la responsable de mostrar la información al usuario a través de una interfaz gráfica. Bootstrap CSS es una biblioteca que proporciona estilos predefinidos para elementos HTML como         botones, formularios, pestañas, etc. Al usar Bootstrap CSS en la capa Vista, puedes mejorar la apariencia de la interfaz gráfica de tu aplicación sin necesidad de escribir código CSS desde cero.
+    
 ### PARTE V. - APLICACIÓN MVC JUEGO
 ¡Llego la hora del reto! Teniendo las bases del uso del framework, cree una nueva ruta, por ejemplo `/guess`, y agrege formulario básico con un campo llamado "número" (guía de como crear formularios HTML https://www.w3schools.com/html/)
 
@@ -109,8 +147,49 @@ Y vamos a implementar la lógica de nuestro juego:
 4. La capa de controlador debe procer el número del usuario mediante método `POST`.
 
 Analice las siguientes situaciones:
+
 - ¿Qué pasa si abro el sitio de juegos en dos navegadores difententes?
+    
+    
+    Si abres el sitio de juegos en dos navegadores diferentes, tendrás dos juegos independientes. Cada juego tendrá su propio número aleatorio, premio, saldo y progreso. Tus acciones en un navegador no        afectarán al otro.
+  
 - Si quisiera qué a cada jugador le aparecieran independientemente sus respectivos saldos. ¿Qué habría que hacer?
+
+    Almacenamiento de saldos independientes en el juego de adivinar un número
+    
+    Para que cada jugador tenga su propio saldo independiente en el juego de adivinar un número, hay que realizar las siguientes modificaciones:
+    
+    1. Implementación de un sistema de autenticación:
+        
+    Integra un sistema de autenticación en tu aplicación, como Spring Security o Auth0.
+    Permite a los jugadores registrarse e iniciar sesión en el sitio web.
+    2. Almacenamiento del saldo:
+    
+    Elige entre dos opciones:
+    Sesión: Almacena el saldo en la sesión del usuario junto con el número aleatorio.
+    Base de datos: Crea una tabla en la base de datos para almacenar el saldo, número aleatorio y otra información relevante de cada jugador.
+    3. Generación del número aleatorio y saldo inicial:
+    
+    Al iniciar el juego, genera un nuevo número aleatorio entre 1 y 10.
+    Asigna un saldo inicial al jugador, como $100.000.
+    Si se usa una sesión, guarda el número aleatorio y el saldo en la sesión del usuario.
+    Si se usa una base de datos, crea un nuevo registro para el jugador con el número aleatorio y el saldo inicial.
+    4. Procesamiento del número del usuario:
+    
+    Valida el número ingresado por el usuario.
+    Si el número es válido, actualiza el saldo en función de la lógica del juego:
+    Si el usuario acierta en la primera oportunidad, gana el premio actual.
+    Si el usuario falla, reduce el premio actual en $10.000.
+    Si se usa una sesión, actualiza el saldo en la sesión del usuario.
+    Si se usa una base de datos, actualiza el registro del jugador en la base de datos.
+    5. Visualización del saldo y número de intentos:
+    
+    Muestra al usuario el saldo actual y el número de intentos realizados en la interfaz del juego.
+    6. Restablecimiento del juego:
+    
+    Al presionar el botón de "reset", genera un nuevo número aleatorio y restablece el saldo al valor inicial.
+    Si se usa una sesión, elimina el número aleatorio y el saldo de la sesión del usuario.
+    Si se usa una base de datos, actualiza el registro del jugador en la base de datos con el nuevo número aleatorio y el saldo inicial.
 
 ## ENTREGA
 - En un README.md colocar lo siguiente:
